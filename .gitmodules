@@ -1,3 +1,12 @@
 [submodule "utils/use-package"]
 	path = packages/utils/use-package
 	url = https://github.com/jwiegley/use-package
+[submodule "utils/with-editor"]
+	path = packages/utils/with-editor
+	url = https://github.com/magit/with-editor
+[submodule "dev/magit"]
+	path = packages/dev/magit
+	url = https://github.com/magit/magit
+[submodule "utils/dash"]
+	path = packages/utils/dash
+	url = https://github.com/magnars/dash.el
