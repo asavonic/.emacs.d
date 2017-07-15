@@ -10,3 +10,9 @@
 [submodule "utils/dash"]
 	path = packages/utils/dash
 	url = https://github.com/magnars/dash.el
+[submodule "utils/s"]
+	path = packages/utils/s
+	url = https://github.com/magnars/s.el
+[submodule "utils/f"]
+	path = packages/utils/f
+	url = https://github.com/rejeep/f.el

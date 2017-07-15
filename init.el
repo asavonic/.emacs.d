@@ -12,8 +12,19 @@
 (require 'use-package)
 
 
+;; modern list library - map, filter, etc.
 (my/add-package "utils/dash")
 (use-package dash)
+
+
+;; string manipulation library
+(my/add-package "utils/s")
+(use-package s)
+
+
+;; file manipulation library
+(my/add-package "utils/f")
+(use-package f)
 
 
 (my/add-package "utils/with-editor")
