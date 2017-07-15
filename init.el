@@ -9,7 +9,15 @@
 (load custom-file)
 
 
+(defun my/package-dir (p)
+  (concat my/packages-dir "/" p))
 
 
+(defun my/add-package (p)
+  (add-to-list 'load-path (my/package-dir p)))
+
+
+(my/add-package "utils/use-package")
+(require 'use-package)
 
 
