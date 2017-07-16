@@ -31,3 +31,6 @@
 [submodule "dev/yasnippet"]
 	path = packages/dev/yasnippet
 	url = https://github.com/joaotavora/yasnippet
+[submodule "dev/company"]
+	path = packages/dev/company
+	url = https://github.com/company-mode/company-mode

@@ -85,3 +85,9 @@
   (setq yas-snippet-dirs '("~/.emacs.d/yas"))
   (yas-global-mode 1))
 
+
+(my/add-package "dev/company")
+(use-package company
+  :config (setq company-idle-delay 0)
+  (setq company-dabbrev-downcase nil)) ; do not downcase candidates
+(global-company-mode 1)
