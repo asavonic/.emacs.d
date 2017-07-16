@@ -138,3 +138,37 @@
    google-translate-preferable-input-methods-alist
    '((nil . ("en"))
      (russian-computer . ("ru")))))
+
+
+(use-package ispell
+  :config
+  (defun spellcheck-aspell? ()
+    (string-match  "aspell$" ispell-program-name))
+
+  (defun spellcheck-hunspell? ()
+    (string-match  "aspell$" ispell-program-name))
+
+
+  (defun flyspell-detect-ispell-args (&optional run-together)
+    "if RUN-TOGETHER is true, spell check the CamelCase words."
+    (cond
+     ((spellcheck-aspell?)
+      (-concat '("--sug-mode=ultra" "--lang=en_US")
+               (when run-together
+                 '("--run-together"
+                   "--run-together-limit=5"
+                   "--run-together-min=2"))))
+
+     ((spellcheck-hunspell?)
+      '("-d en_US"))))
+
+
+  (defadvice ispell-word (around my-ispell-word activate)
+    (let ((ispell-extra-args (flyspell-detect-ispell-args)))
+      ad-do-it))
+
+
+  (defadvice flyspell-auto-correct-word
+      (around my-flyspell-auto-correct-word activate)
+    (let ((ispell-extra-args (flyspell-detect-ispell-args)))
+      ad-do-it)))
