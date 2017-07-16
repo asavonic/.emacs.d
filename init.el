@@ -77,3 +77,11 @@
 (my/add-package "utils/expand-region")
 (use-package expand-region
   :bind ("M-SPC" . er/expand-region))
+
+
+(my/add-package "dev/yasnippet")
+(use-package yasnippet
+  :config
+  (setq yas-snippet-dirs '("~/.emacs.d/yas"))
+  (yas-global-mode 1))
+

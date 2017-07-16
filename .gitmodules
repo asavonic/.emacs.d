@@ -28,3 +28,6 @@
 [submodule "utils/expand-region"]
 	path = packages/utils/expand-region
 	url = https://github.com/magnars/expand-region.el
+[submodule "dev/yasnippet"]
+	path = packages/dev/yasnippet
+	url = https://github.com/joaotavora/yasnippet
