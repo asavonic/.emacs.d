@@ -14,6 +14,12 @@ VAR when Emacs is running in a terminal else just nil."
   `(when (not (my/is-in-terminal)) ,@body))
 
 
+(cond ((string= system-name "ASAVONIC-MOBL")
+       (set-face-attribute 'default nil :font "Source Code Pro-11"))
+      ((eq system-type 'gnu/linux)
+       (set-face-attribute 'default nil :font "DejaVu Sans Mono-12")))
+
+
 (my/when-gui
   (menu-bar-mode -1)
   (tool-bar-mode -1)
