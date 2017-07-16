@@ -34,3 +34,6 @@
 [submodule "dev/company"]
 	path = packages/dev/company
 	url = https://github.com/company-mode/company-mode
+[submodule "misc/google-translate"]
+	path = packages/misc/google-translate
+	url = https://github.com/atykhonov/google-translate

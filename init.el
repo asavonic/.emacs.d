@@ -125,3 +125,16 @@
   :config (setq company-idle-delay 0)
   (setq company-dabbrev-downcase nil)) ; do not downcase candidates
 (global-company-mode 1)
+
+
+(my/add-package "misc/google-translate")
+(use-package google-translate
+  :config
+  (use-package google-translate-smooth-ui)
+  (global-set-key (kbd "C-c t") 'google-translate-smooth-translate)
+  (setq google-translate-translation-directions-alist
+        '(("ja" . "en") ("en" . "ru") ("ru" . "en")))
+  (setq
+   google-translate-preferable-input-methods-alist
+   '((nil . ("en"))
+     (russian-computer . ("ru")))))
