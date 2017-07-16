@@ -40,3 +40,18 @@
 [submodule "org/org-mode"]
 	path = packages/org/org-mode
 	url = git://orgmode.org/org-mode.git
+[submodule "utils/mustache"]
+	path = packages/utils/mustache
+	url = https://github.com/Wilfred/mustache.el
+[submodule "utils/ht"]
+	path = packages/utils/ht
+	url = https://github.com/Wilfred/ht.el
+[submodule "misc/simple-httpd"]
+	path = packages/misc/simple-httpd
+	url = https://github.com/skeeto/emacs-web-server
+[submodule "utils/git"]
+	path = packages/utils/git
+	url = https://github.com/rejeep/git.el
+[submodule "org/org-page"]
+	path = packages/org/org-page
+	url = git@github.com:asavonic/org-page.git

@@ -51,3 +51,6 @@
 ;; file manipulation library
 (my/add-package "utils/f")
 (use-package f)
+
+
+(my/add-package "utils/ht")

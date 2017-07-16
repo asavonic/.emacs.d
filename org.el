@@ -59,3 +59,13 @@
 
   ;; use the current window for indirect buffer display
   (setq org-indirect-buffer-display 'current-window))
+
+
+(my/add-package "utils/mustache")
+(my/add-package "misc/simple-httpd")
+(my/add-package "utils/git")
+(my/add-package "org/org-page")
+(use-package org-page
+  :config
+  (setq op/repository-directory "~/blog")
+  (setq op/browser-preview nil))
