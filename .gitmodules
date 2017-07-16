@@ -22,3 +22,6 @@
 [submodule "visual/solarized"]
 	path = packages/visual/solarized
 	url = https://github.com/bbatsov/solarized-emacs
+[submodule "utils/swiper"]
+	path = packages/utils/swiper
+	url = https://github.com/abo-abo/swiper
