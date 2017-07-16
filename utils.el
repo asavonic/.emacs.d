@@ -5,11 +5,21 @@
 
 
 (defun my/add-package (p)
-  (add-to-list 'load-path (my/package-dir p)))
+  (let ((dir (my/package-dir p)))
+    (unless (file-exists-p dir)
+      (when (yes-or-no-p
+	     (format "Package %s does not exist. Clone instead? " p))
+	(my/clone-package p)))
+    (add-to-list 'load-path dir))
+  t)
 
 
-(defun my/clone-package (p url)
-  (interactive "sPackage name: \nsUrl: ")
+(defun my/clone-package (&optional p url)
+  (unless p
+    (setq p (read-string "Package name: ")))
+  (unless url
+    (setq url (read-string "Url: ")))
+
   (let ((buffer "*clone-package*"))
     (message "Cloning %s ..." p)
     (let ((retcode (call-process "git" nil buffer nil
@@ -20,4 +30,4 @@
 	  (message "Cloning %s ... ok" p)
 	(progn
 	  (display-buffer buffer)
-	  (message "Cloning %s ... failed" p))))))
+	  (error "Cloning %s ... failed" p))))))
