@@ -19,3 +19,6 @@
 [submodule "utils/ace-jump"]
 	path = packages/utils/ace-jump
 	url = https://github.com/winterTTr/ace-jump-mode
+[submodule "visual/solarized"]
+	path = packages/visual/solarized
+	url = https://github.com/bbatsov/solarized-emacs
