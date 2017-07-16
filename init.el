@@ -38,3 +38,8 @@
    ("C-c g l" . magit-log)
    ("C-c g b" . magit-blame)
    ("C-c g ~" . magit-find-file-other-window)))
+
+
+(my/add-package "utils/ace-jump")
+(use-package ace-jump-mode
+  :bind (("M-z" . ace-jump-mode)))

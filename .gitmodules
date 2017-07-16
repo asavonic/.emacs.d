@@ -16,3 +16,6 @@
 [submodule "utils/f"]
 	path = packages/utils/f
 	url = https://github.com/rejeep/f.el
+[submodule "utils/ace-jump"]
+	path = packages/utils/ace-jump
+	url = https://github.com/winterTTr/ace-jump-mode
