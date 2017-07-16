@@ -10,6 +10,26 @@
 (setq indent-tabs-mode nil)
 
 
+(use-package ido
+  :config
+  (setq ido-enable-flex-matching t)
+  (setq ido-create-new-buffer 'always)
+  ;; do not try to guess a file when creating a new file or directory
+  (setq ido-auto-merge-work-directories-length -1)
+  (setq ido-file-extensions-order
+        '(".org" ".txt" ".el" ".h" ".cpp" ".c"))
+  (setq ido-use-virtual-buffers t)
+
+  (when (boundp 'ido-ignore-files)
+    (-concat ido-ignore-files '(".*.o\\'")))
+
+  ;; prevent auto-searches unless called explicitly
+  (setq ido-auto-merge-work-directories-length -1)
+  (ido-mode 1))
+
+
+
+
 (my/add-package "utils/with-editor")
 (my/add-package "dev/magit/lisp")
 (use-package magit
