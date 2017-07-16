@@ -95,3 +95,18 @@ VAR when Emacs is running in a terminal else just nil."
   (add-to-list 'custom-theme-load-path (my/package-dir "visual/solarized"))
   (my/solarized-theme-settings)
   (load-theme 'solarized-dark))
+
+(defun my/use-terminal-theme ()
+  (load-theme 'wombat))
+
+(defun my/use-color-theme (&optional frame)
+  (when frame
+    (select-frame frame))
+  (when (version<= "24" emacs-version)
+    (if (my/is-in-terminal)
+	(my/use-terminal-theme)
+      (my/use-solarized-theme))))
+
+(my/use-color-theme)
+;; setup theme for emacsclient frames
+(add-hook 'after-make-frame-functions #'my/use-color-theme)
