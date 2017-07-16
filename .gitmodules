@@ -25,3 +25,6 @@
 [submodule "utils/swiper"]
 	path = packages/utils/swiper
 	url = https://github.com/abo-abo/swiper
+[submodule "utils/expand-region"]
+	path = packages/utils/expand-region
+	url = https://github.com/magnars/expand-region.el

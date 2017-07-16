@@ -72,3 +72,8 @@
   ("C-c s S" . counsel-pt)
   ("C-c i"   . counsel-imenu)
   ("M-y"     . my/counsel-yank-pop))
+
+
+(my/add-package "utils/expand-region")
+(use-package expand-region
+  :bind ("M-SPC" . er/expand-region))
