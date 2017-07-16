@@ -35,6 +35,15 @@
   (recentf-mode 1))
 
 
+(use-package winner
+  :config
+  (winner-mode 1)
+
+  :bind
+  ("C-c w u" . winner-undo)
+  ("C-c w r" . winner-redo))
+
+
 (my/add-package "utils/with-editor")
 (my/add-package "dev/magit/lisp")
 (use-package magit
