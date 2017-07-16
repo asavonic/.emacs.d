@@ -1,30 +1,11 @@
 (setq my/config-dir   (concat (getenv "HOME") "/.emacs.d"))
 
+(setq custom-file (concat my/config-dir "/custom.el"))
+(load custom-file)
 (load (concat my/config-dir "/utils.el"))
 (load (concat my/config-dir "/system.el"))
 (load (concat my/config-dir "/appearance.el"))
 
-(setq custom-file (concat my/config-dir "/custom.el"))
-(load custom-file)
-
-
-(my/add-package "utils/use-package")
-(require 'use-package)
-
-
-;; modern list library - map, filter, etc.
-(my/add-package "utils/dash")
-(use-package dash)
-
-
-;; string manipulation library
-(my/add-package "utils/s")
-(use-package s)
-
-
-;; file manipulation library
-(my/add-package "utils/f")
-(use-package f)
 
 
 (my/add-package "utils/with-editor")
