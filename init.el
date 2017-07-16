@@ -28,6 +28,11 @@
   (ido-mode 1))
 
 
+(use-package recentf
+  :config
+  (setq recentf-max-menu-items 250)
+  (run-at-time "30" (* 10 60) #'recentf-save-list)
+  (recentf-mode 1))
 
 
 (my/add-package "utils/with-editor")
