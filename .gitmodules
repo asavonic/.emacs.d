@@ -37,3 +37,6 @@
 [submodule "misc/google-translate"]
 	path = packages/misc/google-translate
 	url = https://github.com/atykhonov/google-translate
+[submodule "org/org-mode"]
+	path = packages/org/org-mode
+	url = git://orgmode.org/org-mode.git

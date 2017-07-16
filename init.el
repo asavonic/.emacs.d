@@ -5,9 +5,10 @@
 (load (concat my/config-dir "/utils.el"))
 (load (concat my/config-dir "/system.el"))
 (load (concat my/config-dir "/appearance.el"))
+(load (concat my/config-dir "/org.el"))
 
 
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 
 (use-package ido
