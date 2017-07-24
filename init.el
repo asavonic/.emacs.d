@@ -117,7 +117,7 @@
 (my/add-package "dev/yasnippet")
 (use-package yasnippet
   :config
-  (setq yas-snippet-dirs '("~/.emacs.d/yas"))
+  (setq yas-snippet-dirs (list (concat my/config-dir "/yas")))
   (yas-global-mode 1))
 
 
