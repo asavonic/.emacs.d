@@ -45,6 +45,32 @@
   ("C-c w r" . winner-redo))
 
 
+(use-package dired
+  :config
+  ;; show human readable file sizes in Dired
+  (setq dired-listing-switches "-alh")
+  ;; behave like 2-panel file manager, i.e. another dired buffer would
+  ;; be a default directory for copy/move operations
+  (setq dired-dwim-target t)
+
+  (defun my/eshell-here ()
+    "Go to eshell and set current directory to the buffer's directory"
+    (interactive)
+    (let ((dir (file-name-directory (or (buffer-file-name)
+                                        default-directory))))
+      (eshell)
+      (eshell/pushd ".")
+      (cd dir)
+      (goto-char (point-max))
+      (eshell-kill-input)
+      (eshell-send-input)))
+
+  (defun my/dired-define-keys ()
+    (define-key dired-mode-map (kbd "s") #'my/eshell-here))
+
+  (add-hook 'dired-mode-hook #'my/dired-define-keys))
+
+
 (my/add-package "utils/with-editor")
 (my/add-package "dev/magit/lisp")
 (use-package magit
