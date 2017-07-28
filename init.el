@@ -1,7 +1,9 @@
 (setq my/config-dir   (concat (getenv "HOME") "/.emacs.d"))
 
+
 (setq custom-file (concat my/config-dir "/custom.el"))
 (load custom-file)
+(load (concat my/config-dir "/private.el"))
 (load (concat my/config-dir "/utils.el"))
 (load (concat my/config-dir "/system.el"))
 (load (concat my/config-dir "/appearance.el"))
