@@ -3,6 +3,7 @@
 
 (setq custom-file (concat my/config-dir "/custom.el"))
 (load custom-file)
+(load (concat my/config-dir "/install.el"))
 (load (concat my/config-dir "/private.el"))
 (load (concat my/config-dir "/utils.el"))
 (load (concat my/config-dir "/system.el"))
