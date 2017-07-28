@@ -1,0 +1,13 @@
+
+* Installation
+#+begin_src sh
+  # Several packages may not be required for an installation (such as
+  # org-mode), so we can skip them:
+  cat > private.el <<EOF
+  (setq my/submodule-ignore-list '("packages/org/org-page"
+                                   "packages/org/org-mode"))
+  EOF
+
+  # Initialize package submodules
+  emacs -Q --load private.el --load install.el -f my/submodule-sync
+#+end_src
