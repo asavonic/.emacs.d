@@ -21,6 +21,7 @@ VAR when Emacs is running in a terminal else just nil."
 
 
 (menu-bar-mode -1)
+(setq visible-bell t)
 (my/when-gui
  (tool-bar-mode -1)
  (scroll-bar-mode -1))
