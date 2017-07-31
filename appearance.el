@@ -20,10 +20,10 @@ VAR when Emacs is running in a terminal else just nil."
        (set-face-attribute 'default nil :font "DejaVu Sans Mono-12")))
 
 
+(menu-bar-mode -1)
 (my/when-gui
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1))
+ (tool-bar-mode -1)
+ (scroll-bar-mode -1))
 
 
 ;; no 'Welcome to Emacs' buffer at startup
