@@ -14,13 +14,13 @@
 	    (let ((submodule (match-string 1)))
 	      (if (member submodule my/submodule-ignore-list)
 		  (setq ignored (+ ignored 1))
-                (add-to-list submodule-list submodule))))
+                (add-to-list 'submodule-list submodule))))
           (forward-line 1))))
 
     (switch-to-buffer (get-buffer-create "*submodule sync*"))
 
     (mapc (lambda (submodule)
-            (print "Updating submodule: %s" submodule)
+            (message "Updating submodule: %s" submodule)
             (call-process "git" nil (current-buffer) nil
                           "submodule" "update" "--init" "--"
                           submodule))
