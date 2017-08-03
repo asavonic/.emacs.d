@@ -24,3 +24,17 @@
   (newline)
   (insert (shell-command-to-string "xclip -o"))
   t)
+
+(defcustom my/is-android nil
+  "Whether running on an Android system.
+Should be customized in private.el on selected systems")
+
+
+(defun my/android-browse-url (url &optional new-window)
+  (call-process "am" nil nil nil
+                "start" "--user" "0"
+                "-a" "android.intent.action.VIEW"
+                "-d" url))
+
+(when my/is-android
+  (setq browse-url-browser-function #'my/android-browse-url))
