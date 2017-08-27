@@ -55,3 +55,6 @@
 [submodule "org/org-page"]
 	path = packages/org/org-page
 	url = git@github.com:asavonic/org-page.git
+[submodule "dev/lua-mode"]
+	path = packages/dev/lua-mode
+	url = https://github.com/immerrr/lua-mode

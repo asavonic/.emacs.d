@@ -170,6 +170,18 @@
      (russian-computer . ("ru")))))
 
 
+(my/add-package "dev/lua-mode")
+(use-package lua-mode
+  :config
+  (setq lua-indent-level 4)
+  (setq lua-default-application "awesome-client")
+  (setq lua-prompt-regexp "awesome#")
+  (setq lua-default-command-switches '())
+
+  :bind
+  (("C-c C-e" . lua-send-region)))
+
+
 (use-package ispell
   :config
   (defun spellcheck-aspell? ()
