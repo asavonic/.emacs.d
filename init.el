@@ -132,9 +132,10 @@
   ("M-x"     . counsel-M-x)
   ("C-x l"   . counsel-locate)
   ("C-x r b" . counsel-bookmark)
-  ("C-c s s" . counsel-dwim)
-  ("C-c s S" . counsel-pt)
   ("C-c i"   . counsel-imenu)
+  ("C-c s f" . counsel-git)
+  ("C-c s s" . my/counsel-pt-dwim)
+  ("C-c s S" . my/counsel-pt)
   ("M-y"     . my/counsel-yank-pop))
 
 
