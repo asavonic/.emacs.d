@@ -69,3 +69,7 @@
   :config
   (setq op/repository-directory "~/blog")
   (setq op/browser-preview nil))
+
+
+(my/add-package "org/org-bookmark-heading")
+(use-package org-bookmark-heading)

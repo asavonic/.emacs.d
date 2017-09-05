@@ -58,3 +58,12 @@
 [submodule "dev/lua-mode"]
 	path = packages/dev/lua-mode
 	url = https://github.com/immerrr/lua-mode
+[submodule "misc/dashboard"]
+	path = packages/misc/dashboard
+	url = https://github.com/rakanalh/emacs-dashboard
+[submodule "visual/page-break-lines"]
+	path = packages/visual/page-break-lines
+	url = https://github.com/purcell/page-break-lines
+[submodule "org/org-bookmark-heading"]
+	path = packages/org/org-bookmark-heading
+	url = https://github.com/alphapapa/org-bookmark-heading

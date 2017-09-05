@@ -215,3 +215,13 @@
       (around my-flyspell-auto-correct-word activate)
     (let ((ispell-extra-args (flyspell-detect-ispell-args)))
       ad-do-it)))
+
+
+(my/add-package "misc/dashboard")
+(my/add-package "visual/page-break-lines")
+(use-package dashboard
+  :init (use-package page-break-lines)
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-items '((recents  . 5)
+                          (bookmarks . 5))))
