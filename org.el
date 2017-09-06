@@ -5,6 +5,7 @@
 
   :bind
   ("<f12>" . org-agenda)
+  ("<f11>" . org-capture)
   ("C-c l" . org-store-link)
 
   :config
@@ -58,7 +59,15 @@
   (setq ido-default-buffer-method 'selected-window)
 
   ;; use the current window for indirect buffer display
-  (setq org-indirect-buffer-display 'current-window))
+  (setq org-indirect-buffer-display 'current-window)
+
+  ;; put 'CLOSED: <timestamp>' when moving task to any of done state
+  (setq org-log-done 'time)
+
+  (setq org-blank-before-new-entry
+        '((heading . never) (plain-list-item . auto)))
+
+  (setq org-goto-auto-isearch nil))
 
 
 (my/add-package "utils/mustache")
