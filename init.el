@@ -1,14 +1,17 @@
-(setq my/config-dir   (concat (getenv "HOME") "/.emacs.d"))
+
+(defun my/load-config (rel-name)
+  (load (locate-user-emacs-file rel-name)))
 
 
-(setq custom-file (concat my/config-dir "/custom.el"))
+(setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file)
-(load (concat my/config-dir "/install.el"))
-(load (concat my/config-dir "/private.el"))
-(load (concat my/config-dir "/utils.el"))
-(load (concat my/config-dir "/system.el"))
-(load (concat my/config-dir "/appearance.el"))
-(load (concat my/config-dir "/org.el"))
+
+(my/load-config "install.el")
+(my/load-config "private.el")
+(my/load-config "utils.el")
+(my/load-config "system.el")
+(my/load-config "appearance.el")
+(my/load-config "org.el")
 
 
 (setq-default indent-tabs-mode nil)
@@ -147,7 +150,7 @@
 (my/add-package "dev/yasnippet")
 (use-package yasnippet
   :config
-  (setq yas-snippet-dirs (list (concat my/config-dir "/yas")))
+  (setq yas-snippet-dirs (list (locate-user-emacs-file "yas")))
   (yas-global-mode 1))
 
 

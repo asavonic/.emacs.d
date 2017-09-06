@@ -1,7 +1,7 @@
 (setq my/packages-dir-name "packages")
 
 (defun my/package-dir (p)
-  (concat my/config-dir "/" my/packages-dir-name "/" p))
+  (concat (locate-user-emacs-file my/packages-dir-name) "/" p))
 
 
 (defun my/add-package (p)
@@ -26,7 +26,7 @@
   (let ((buffer "*clone-package*"))
     (message "Cloning %s ..." p)
     (let ((retcode (call-process "git" nil buffer nil
-				 "--git-dir" (concat my/config-dir "/.git")
+				 "--git-dir" (locate-user-emacs-file ".git")
 				 "submodule" "add" "--name" p
 				 url (concat my/packages-dir-name "/" p))))
       (if (= retcode 0)
