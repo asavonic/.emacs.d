@@ -182,8 +182,8 @@
   (setq lua-prompt-regexp "awesome#")
   (setq lua-default-command-switches '())
 
-  :bind
-  (("C-c C-e" . lua-send-region)))
+  :bind (:map lua-mode-map
+              ("C-x C-e" . lua-send-region)))
 
 
 (use-package ispell
