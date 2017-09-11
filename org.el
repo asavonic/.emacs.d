@@ -82,3 +82,8 @@
 
 (my/add-package "org/org-bookmark-heading")
 (use-package org-bookmark-heading)
+
+
+(my/add-package "org/hyperbole")
+(use-package hyperbole)
+

@@ -67,3 +67,6 @@
 [submodule "org/org-bookmark-heading"]
 	path = packages/org/org-bookmark-heading
 	url = https://github.com/alphapapa/org-bookmark-heading
+[submodule "org/hyperbole"]
+	path = packages/org/hyperbole
+	url = https://git.savannah.gnu.org/git/hyperbole.git
