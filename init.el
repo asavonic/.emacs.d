@@ -228,3 +228,38 @@
   (dashboard-setup-startup-hook)
   (setq dashboard-items '((recents  . 5)
                           (bookmarks . 5))))
+
+
+;; Project-specific settings
+;;
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+(c-add-style "krita"
+             '("gnu"
+	       (fill-column . 80)
+	       (c++-indent-level . 4)
+	       (c-basic-offset . 4)
+	       (indent-tabs-mode . nil)
+	       (c-offsets-alist . ((arglist-intro . ++)
+				   (innamespace . 0)
+				   (member-init-intro . ++)))))
+
+(c-add-style "llvm"
+             '("gnu"
+	       (fill-column . 80)
+	       (c++-indent-level . 2)
+	       (c-basic-offset . 2)
+	       (indent-tabs-mode . nil)
+	       (c-offsets-alist . ((arglist-intro . ++)
+				   (innamespace . 0)
+				   (member-init-intro . ++)))))
+
+
+(my/add-package "my")
+(use-package cc-project
+  :config
+  (cc-project-set-style "llvm"   "llvm")
+  (cc-project-set-style "clang"  "llvm")
+  (cc-project-set-style "cppref" "llvm")
+  (cc-project-set-style "krita"  "krita"))
+
