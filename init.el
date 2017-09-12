@@ -263,3 +263,8 @@
   (cc-project-set-style "cppref" "llvm")
   (cc-project-set-style "krita"  "krita"))
 
+
+;; Workaround for RCE issue with enriched text
+(eval-after-load "enriched"
+  '(defun enriched-decode-display-prop (start end &optional param)
+     (list start end)))
