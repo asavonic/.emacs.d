@@ -10,6 +10,7 @@
 (defvar tramp-ssh-controlmaster-options
       "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 
+(setq epg-gpg-program "gpg2")
 
 (defcustom my/clipboard-handler-default-buffer "*clipboard*"
   "Default buffer to use for `my/clipboard-handler'")
