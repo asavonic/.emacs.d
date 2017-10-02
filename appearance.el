@@ -16,6 +16,8 @@ VAR when Emacs is running in a terminal else just nil."
 
 (cond ((string= system-name "ASAVONIC-MOBL")
        (set-face-attribute 'default nil :font "Source Code Pro-11"))
+      ((string= system-name "kubuntu-vm")
+       (set-face-attribute 'default nil :font "Source Code Pro-12"))
       ((eq system-type 'gnu/linux)
        (set-face-attribute 'default nil :font "DejaVu Sans Mono-12")))
 
