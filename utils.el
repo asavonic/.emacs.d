@@ -26,7 +26,7 @@
   (let ((buffer "*clone-package*"))
     (message "Cloning %s ..." p)
     (let ((retcode (call-process "git" nil buffer nil
-				 "--git-dir" (locate-user-emacs-file ".git")
+				 "-C" (expand-file-name (locate-user-emacs-file "."))
 				 "submodule" "add" "--name" p
 				 url (concat my/packages-dir-name "/" p))))
       (if (= retcode 0)
