@@ -77,6 +77,8 @@
 
   (bind-key (kbd "C-c C-w") #'my/org-refile-ivy org-mode-map)
 
+  (setq org-blank-before-new-entry
+        '((heading . nil) (plain-list-item . nil))))
 
 
 (my/add-package "utils/mustache")
