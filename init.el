@@ -274,3 +274,13 @@
   :config
   (add-to-list 'auto-mode-alist '("\\.rst\\'" . rst-mode)))
 
+
+(my/add-package "utils/hl-anything")
+(use-package hl-anything
+  :bind
+  ("C-c C-h C-h" . hl-highlight-thingatpt-local)
+  ("C-c C-h C-u" . hl-unhighlight-all-local)
+  ("C-c C-h C-n" . hl-find-next-thing)
+  ("C-c C-h C-p" . hl-find-prev-thing)
+  ("C-c C-h C-s" . hl-save-highlights)
+  ("C-c C-h C-r" . hl-save-highlights))
