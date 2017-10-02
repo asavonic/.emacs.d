@@ -268,3 +268,9 @@
 (eval-after-load "enriched"
   '(defun enriched-decode-display-prop (start end &optional param)
      (list start end)))
+
+(my/add-package "org/rst")
+(use-package rst
+  :config
+  (add-to-list 'auto-mode-alist '("\\.rst\\'" . rst-mode)))
+
