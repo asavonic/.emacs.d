@@ -284,3 +284,8 @@
   ("C-c C-h C-p" . hl-find-prev-thing)
   ("C-c C-h C-s" . hl-save-highlights)
   ("C-c C-h C-r" . hl-save-highlights))
+
+
+(my/add-package "misc/ledger")
+(use-package ledger-mode
+  :mode "ledger.gpg\\'")

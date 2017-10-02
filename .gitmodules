@@ -73,3 +73,6 @@
 [submodule "utils/hl-anything"]
 	path = packages/utils/hl-anything
 	url = https://github.com/hl-anything/hl-anything-emacs
+[submodule "misc/ledger"]
+	path = packages/misc/ledger
+	url = https://github.com/ledger/ledger-mode
