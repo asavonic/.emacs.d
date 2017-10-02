@@ -299,3 +299,8 @@
   :bind
   ("C-c d d" . realgud:gdb)
   ("C-c d a" . short-key-mode))
+
+
+(my/add-package "dev/llvm")
+(use-package llvm-mode)
+(use-package tablegen-mode)
