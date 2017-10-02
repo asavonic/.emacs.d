@@ -67,7 +67,16 @@
   (setq org-blank-before-new-entry
         '((heading . never) (plain-list-item . auto)))
 
-  (setq org-goto-auto-isearch nil))
+  (setq org-goto-auto-isearch nil)
+
+  (defun my/org-refile-ivy ()
+    (interactive)
+
+    (flet ((completing-read (&rest args) (apply #'ivy-completing-read args)))
+      (org-refile)))
+
+  (bind-key (kbd "C-c C-w") #'my/org-refile-ivy org-mode-map)
+
 
 
 (my/add-package "utils/mustache")
