@@ -289,3 +289,13 @@
 (my/add-package "misc/ledger")
 (use-package ledger-mode
   :mode "ledger.gpg\\'")
+
+
+(my/add-package "dev/realgud")
+(my/add-package "utils/load-relative")
+(my/add-package "utils/loc-changes")
+(use-package realgud
+  :init (require 'info) ;; workaround for a bug with hyperbole
+  :bind
+  ("C-c d d" . realgud:gdb)
+  ("C-c d a" . short-key-mode))

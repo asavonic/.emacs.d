@@ -76,3 +76,12 @@
 [submodule "misc/ledger"]
 	path = packages/misc/ledger
 	url = https://github.com/ledger/ledger-mode
+[submodule "dev/realgud"]
+	path = packages/dev/realgud
+	url = https://github.com/realgud/realgud
+[submodule "utils/load-relative"]
+	path = packages/utils/load-relative
+	url = https://github.com/rocky/emacs-load-relative
+[submodule "utils/loc-changes"]
+	path = packages/utils/loc-changes
+	url = https://github.com/rocky/emacs-loc-changes
