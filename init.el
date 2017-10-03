@@ -278,13 +278,14 @@
 (my/add-package "utils/hl-anything")
 (use-package hl-anything
   :bind
-  ("C-c C-h C-h" . hl-highlight-thingatpt-local)
-  ("C-c C-h C-u" . hl-unhighlight-all-local)
-  ("C-c C-h C-n" . hl-find-next-thing)
-  ("C-c C-h C-p" . hl-find-prev-thing)
-  ("C-c C-h C-s" . hl-save-highlights)
-  ("C-c C-h C-r" . hl-save-highlights))
-
+  ("C-c h h" . hl-highlight-thingatpt-global)
+  ("C-c h u" . hl-unhighlight-all-global)
+  ("C-c h n" . hl-find-next-thing)
+  ("C-c h p" . hl-find-prev-thing)
+  ("C-c h s" . hl-save-highlights)
+  ("C-c h r" . hl-save-highlights)
+  :config
+  (hl-highlight-mode))
 
 (my/add-package "misc/ledger")
 (use-package ledger-mode
