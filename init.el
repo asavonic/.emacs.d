@@ -16,6 +16,7 @@
 
 (setq-default indent-tabs-mode nil)
 
+(savehist-mode 1)
 
 (use-package ido
   :config
