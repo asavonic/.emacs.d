@@ -301,6 +301,11 @@
   ("C-c d a" . short-key-mode))
 
 
+(use-package compile
+  :bind
+  ("C-c c c" . compile)
+  ("C-c c r" . recompile))
+
 (my/add-package "dev/llvm")
 (use-package llvm-mode)
 (use-package tablegen-mode)
