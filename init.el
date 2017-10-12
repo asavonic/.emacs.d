@@ -18,6 +18,11 @@
 
 (savehist-mode 1)
 
+
+(use-package tramp
+  :config (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+
+
 (use-package ido
   :config
   (setq ido-enable-flex-matching t)
