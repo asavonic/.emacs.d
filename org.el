@@ -1,3 +1,22 @@
+(defun my/org-checkbox-at-point-p ()
+  "Checks if the point is on a plain list item with a checkbox."
+  (let (item-begin context type)
+    (when (setq item-begin (org-in-item-p))
+      (save-excursion
+        (goto-char item-begin)
+        (forward-char)
+
+        (when (org-element-property :checkbox (org-element-context))
+          t)))))
+
+(defun my/org-meta-return ()
+  "Inserts a normal plain-list item or an item with a checkbox,
+  depending on whether a current item has a checkbox."
+  (interactive)
+  (if (my/org-checkbox-at-point-p)
+      (call-interactively 'org-insert-todo-heading)
+    (org-meta-return)))
+
 
 (my/add-package "org/org-mode/install/emacs/site-lisp/org")
 (use-package org
@@ -10,6 +29,10 @@
 
   :config
   (setq org-startup-indented t)
+
+  ;; TODO: for some reason this doesn't work with built-in org-mode
+  ;; when I set it through :bind.
+  (define-key org-mode-map (kbd "<M-return>" ) #'my/org-meta-return)
 
   ;; control the expansion level for jumping to org file
   (setq org-show-context-detail
