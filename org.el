@@ -23,9 +23,9 @@
   :defer t
 
   :bind
-  ("<f12>" . org-agenda)
-  ("<f11>" . org-capture)
-  ("C-c l" . org-store-link)
+  ("C-c a a" . org-agenda)
+  ("C-c a c" . org-capture)
+  ("C-c a l" . org-store-link)
 
   :config
   (setq org-startup-indented t)
@@ -33,7 +33,7 @@
   ;; TODO: for some reason this doesn't work with built-in org-mode
   ;; when I set it through :bind.
   (define-key org-mode-map (kbd "<M-return>" ) #'my/org-meta-return)
-
+  (define-key org-mode-map (kbd "M-RET" )      #'my/org-meta-return)
   ;; control the expansion level for jumping to org file
   (setq org-show-context-detail
         '((agenda        . tree)
