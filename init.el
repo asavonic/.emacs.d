@@ -84,6 +84,15 @@
 
 
 (my/add-package "utils/with-editor")
+(use-package with-editor
+  :config
+  (use-package shell)
+  (use-package term)
+  (use-package eshell)
+  (add-hook 'shell-mode-hook  'with-editor-export-editor)
+  (add-hook 'term-exec-hook   'with-editor-export-editor)
+  (add-hook 'eshell-mode-hook 'with-editor-export-editor))
+
 (my/add-package "dev/magit/lisp")
 (use-package magit
   :bind
