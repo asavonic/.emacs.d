@@ -85,3 +85,6 @@
 [submodule "utils/loc-changes"]
 	path = packages/utils/loc-changes
 	url = https://github.com/rocky/emacs-loc-changes
+[submodule "utils/beginend"]
+	path = packages/utils/beginend
+	url = https://github.com/DamienCassou/beginend

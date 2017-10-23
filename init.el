@@ -335,3 +335,8 @@
 (use-package subword
   :config
   (add-hook 'c-mode-common-hook #'subword-mode))
+
+(my/add-package "utils/beginend")
+(use-package beginend
+  :config
+  (beginend-global-mode))
