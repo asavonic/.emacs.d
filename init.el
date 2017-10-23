@@ -314,7 +314,7 @@
   :init (require 'info) ;; workaround for a bug with hyperbole
   :bind
   ("C-c d d" . realgud:gdb)
-  ("C-c d a" . short-key-mode))
+  ("C-c d a" . realgud-short-key-mode))
 
 
 (use-package compile
