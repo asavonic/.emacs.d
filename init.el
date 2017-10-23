@@ -325,3 +325,7 @@
 (my/add-package "dev/llvm")
 (use-package llvm-mode)
 (use-package tablegen-mode)
+
+(use-package subword
+  :config
+  (add-hook 'c-mode-common-hook #'subword-mode))
