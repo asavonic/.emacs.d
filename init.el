@@ -326,6 +326,12 @@
 (use-package llvm-mode)
 (use-package tablegen-mode)
 
+(defun my/revert-buffer-no-prompt ()
+  (interactive)
+  (revert-buffer t t))
+
+(global-set-key (kbd "C-c b r") #'my/revert-buffer-no-prompt)
+
 (use-package subword
   :config
   (add-hook 'c-mode-common-hook #'subword-mode))
