@@ -6,3 +6,12 @@ ido.last
 /recentf
 /.cache
 /url
+
+/#!*
+
+/.org-id-locations
+/bookmarks
+/eshell
+/history
+/network-security.data
+/tramp
