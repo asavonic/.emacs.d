@@ -20,7 +20,17 @@
 
 
 (use-package tramp
-  :config (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+  :config
+  ;; Use remote PATH variable
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
+  (defun my/comint-disable-history-complete ()
+    "Disable history auto-completion to avoid shell slowdown on
+    remote hosts"
+    (setq comint-dynamic-complete-functions
+          '(comint-filename-completion)))
+
+  (add-hook 'comint-mode-hook #'my/comint-disable-history-complete))
 
 
 (use-package ido
