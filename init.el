@@ -336,6 +336,7 @@
 (use-package llvm-mode)
 (use-package tablegen-mode)
 
+
 (defun my/revert-buffer-no-prompt ()
   (interactive)
   (revert-buffer t t))
@@ -361,3 +362,9 @@
                    (calendar-iso-from-absolute
                     (calendar-absolute-from-gregorian (list month day year)))))
           'font-lock-face 'font-lock-function-name-face)))
+
+
+;; Try to use dedicated frame for compilation buffer
+(push '("\\*compilation\\*" . (nil (reusable-frames . t)))
+      display-buffer-alist)
+
