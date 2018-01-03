@@ -28,6 +28,7 @@
   ("C-c a l" . org-store-link)
   ("C-c p c" . calendar)
   ("C-c n"   . org-narrow-to-subtree)
+  ("C-c a p" . my/org-sync)
 
   :config
   (setq org-startup-indented t)
@@ -103,7 +104,16 @@
   (bind-key (kbd "C-c C-w") #'my/org-refile-ivy org-mode-map)
 
   (setq org-blank-before-new-entry
-        '((heading . nil) (plain-list-item . nil))))
+        '((heading . nil) (plain-list-item . nil)))
+
+  (defcustom my/org-sync-command nil
+    "Shell command to syncronize org files")
+
+  (defun my/org-sync ()
+    (interactive)
+    (if my/org-sync-command
+        (async-shell-command my/org-sync-command)
+      (error "Sync command is not defined"))))
 
 
 (my/add-package "utils/mustache")
