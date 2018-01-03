@@ -226,6 +226,7 @@
 
 (my/add-package "dev/lua-mode")
 (use-package lua-mode
+  :mode "\\.lua\\'"
   :config
   (setq lua-indent-level 4)
   (setq lua-default-application "awesome-client")
