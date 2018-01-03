@@ -128,3 +128,9 @@
   (setq org-attach-directory "storage"
         org-attach-auto-tag  "attach"))
 
+(defun my/org-capture-script (text &optional attachment)
+  (org-capture nil "t")
+  (insert text)
+  (when attachment
+    (let ((org-attach-method 'mv)) (org-attach-attach attachment)))
+  (org-capture-finalize))
