@@ -120,7 +120,9 @@ VAR when Emacs is running in a terminal else just nil."
 ;; setup theme for emacsclient frames
 (add-hook 'after-make-frame-functions #'my/use-color-theme)
 
+
 ;; don't split window for small screens
 (when my/is-android
   (setq pop-up-windows nil)
-  (setq org-agenda-window-setup 'current-window))
+  (setq org-agenda-window-setup 'current-window)
+  (add-hook 'org-capture-mode-hook #'delete-other-windows))
