@@ -39,10 +39,7 @@
   (define-key org-mode-map (kbd "M-RET" )      #'my/org-meta-return)
   ;; control the expansion level for jumping to org file
   (setq org-show-context-detail
-        '((agenda        . tree)
-          (bookmark-jump . tree)
-          (isearch       . lineage)
-          (default       . ancestors)))
+        '((default       . canonical)))
 
   (setq org-use-fast-todo-selection t)
 
