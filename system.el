@@ -12,11 +12,6 @@
 
 (setq epg-gpg-program "gpg2")
 
-(when my/is-android
-  ;; Do not allow gpg to ask any passwords in a terminal running
-  ;; emacs. Otherwise pinentry-curses would corrupt it.
-  (setenv "GPG_TTY" ""))
-
 (defcustom my/clipboard-handler-default-buffer "*clipboard*"
   "Default buffer to use for `my/clipboard-handler'")
 
@@ -44,3 +39,9 @@ Should be customized in private.el on selected systems")
 
 (when my/is-android
   (setq browse-url-browser-function #'my/android-browse-url))
+
+(when my/is-android
+  ;; Do not allow gpg to ask any passwords in a terminal running
+  ;; emacs. Otherwise pinentry-curses would corrupt it.
+  (setenv "GPG_TTY" ""))
+
