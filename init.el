@@ -394,3 +394,4 @@
 (push '("\\*compilation\\*" . (nil (reusable-frames . t)))
       display-buffer-alist)
 
+(use-package mozc)
