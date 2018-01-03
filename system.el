@@ -45,3 +45,18 @@ Should be customized in private.el on selected systems")
   ;; emacs. Otherwise pinentry-curses would corrupt it.
   (setenv "GPG_TTY" ""))
 
+
+(defun my/find-file-or-external (file)
+  (if my/is-android
+      (cond ((if (string-match-p ".*.pdf\\'" file))
+             (call-process "termux-open" nil nil nil file))
+            (t
+             (find-file file)))
+
+    (find-file file)))
+
+
+(defun my/send-file (file)
+  (if my/is-android
+      (call-process "termux-share" nil nil nil "-a" "send" file)
+    (error "not implemented")))
