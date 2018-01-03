@@ -217,7 +217,7 @@
   (use-package google-translate-smooth-ui)
   (global-set-key (kbd "C-c t") 'google-translate-smooth-translate)
   (setq google-translate-translation-directions-alist
-        '(("en" . "ru") ("ja" . "en") ("ru" . "en")))
+        '(("ja" . "en") ("en" . "ja") ("en" . "ru") ("ru" . "en")))
   (setq
    google-translate-preferable-input-methods-alist
    '((nil . ("en"))
