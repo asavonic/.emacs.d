@@ -121,3 +121,8 @@
 (my/add-package "org/hyperbole")
 (use-package hyperbole)
 
+(use-package org-attach
+  :config
+  (setq org-attach-directory "storage"
+        org-attach-auto-tag  "attach"))
+
