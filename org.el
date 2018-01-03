@@ -26,6 +26,8 @@
   ("C-c a a" . org-agenda)
   ("C-c a c" . org-capture)
   ("C-c a l" . org-store-link)
+  ("C-c p c" . calendar)
+  ("C-c n"   . org-narrow-to-subtree)
 
   :config
   (setq org-startup-indented t)
