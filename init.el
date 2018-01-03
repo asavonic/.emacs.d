@@ -88,7 +88,32 @@
       (eshell-send-input)))
 
   (defun my/dired-define-keys ()
+    (define-key dired-mode-map (kbd ";t") #'my/dired-tar-compress)
+    (define-key dired-mode-map (kbd "; s") #'my/dired-send)
+    (define-key dired-mode-map (kbd "RET") #'my/dired-find-file-or-external)
     (define-key dired-mode-map (kbd "s") #'my/eshell-here))
+
+  (defun my/dired-tar-compress (&optional arg)
+    (interactive)
+    (let* ((files (dired-get-marked-files t current-prefix-arg))
+           (name (if (cdr files)
+                     (ido-read-file-name "tar file: " nil nil nil ""
+                                         #'file-regular-p)
+                   (concat (car files) ".tar.gz"))))
+           (dired-do-shell-command (format "tar -zcvf %s * " name)
+                                   arg files)))
+
+  (defun my/dired-find-file-or-external ()
+    (interactive)
+    (let ((file (dired-get-file-for-visit)))
+      (if (string-match-p ".*.pdf\\'" file)
+          (call-process "termux-open" nil nil nil file)
+        (find-file file))))
+
+  (defun my/dired-send ()
+    (interactive)
+    (let ((file (dired-get-file-for-visit)))
+      (call-process "termux-share" nil nil nil "-a" "send" file)))
 
   (add-hook 'dired-mode-hook #'my/dired-define-keys))
 
