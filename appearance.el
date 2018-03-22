@@ -13,21 +13,43 @@ VAR when Emacs is running in a terminal else just nil."
 VAR when Emacs is running in a terminal else just nil."
   `(when (not (my/is-in-terminal)) ,@body))
 
+(defun my/font-exists-p (fontname)
+  "test if this font is exist or not."
+  (my/when-gui
+   (if (or (not fontname) (string= fontname ""))
+       nil
+     (if (not (x-list-fonts fontname))
+	 nil t))))
 
-(cond ((string= system-name "ASAVONIC-MOBL")
-       (set-face-attribute 'default nil :font "Source Code Pro-11"))
-      ((string= system-name "kubuntu-vm")
-       (set-face-attribute 'default nil :font "Source Code Pro-12"))
-      ((eq system-type 'gnu/linux)
-       (set-face-attribute 'default nil :font "DejaVu Sans Mono-12")))
+(defvar my/font "DejaVu Sans Mono"
+  "Main font")
 
+(defvar my/font-ja "IPAPMincho"
+  "Japanese font")
+
+(defun my/use-font (&optional frame)
+  (when frame
+    (select-frame frame))
+
+  (cond ((string= system-name "ASAVONIC-MOBL")
+         (setq my/font "Source Code Pro-11"))
+        ((string= system-name "kubuntu-vm")
+         (setq my/font "Source Code Pro-12"))
+        ((eq system-type 'gnu/linux)
+         (setq my/font "DejaVu Sans Mono-12")))
+
+  (when (my/font-exists-p my/font)
+    (set-face-attribute 'default nil :font my/font))
+
+  (when (my/font-exists-p my/font-ja)
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font) charset
+                        (font-spec :family my/font-ja)))))
 
 (menu-bar-mode -1)
 (setq visible-bell t)
-(my/when-gui
- (tool-bar-mode -1)
- (scroll-bar-mode -1))
-
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; no 'Welcome to Emacs' buffer at startup
 (setq inhibit-startup-screen t)
@@ -35,6 +57,7 @@ VAR when Emacs is running in a terminal else just nil."
 
 ;; ask only "y or n" instead of "yes and no"
 (defalias 'yes-or-no-p 'y-or-n-p)
+
 
 
 (defun my/show-trailing-whitespace (&optional disable)
@@ -119,6 +142,7 @@ VAR when Emacs is running in a terminal else just nil."
 (my/use-color-theme)
 ;; setup theme for emacsclient frames
 (add-hook 'after-make-frame-functions #'my/use-color-theme)
+(add-hook 'after-make-frame-functions #'my/use-font)
 
 
 ;; don't split window for small screens
