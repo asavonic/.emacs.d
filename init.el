@@ -407,10 +407,14 @@
 (push '("\\*compilation\\*" . (nil (reusable-frames . t)))
       display-buffer-alist)
 
-(use-package mozc)
+(my/add-package "misc/mozc-im")
+(use-package mozc-im)
 
 (my/add-package "dev/lispy")
 (my/add-package "utils/avy")
 (my/add-package "utils/ace-window")
 (my/add-package "utils/iedit")
 (use-package lispy)
+
+
+
