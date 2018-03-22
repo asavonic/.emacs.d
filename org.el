@@ -25,8 +25,8 @@
   :bind
   ("C-c a a" . org-agenda)
   ("C-c a c" . org-capture)
+  ("C-c a d" . calendar)
   ("C-c a l" . org-store-link)
-  ("C-c p c" . calendar)
   ("C-c n"   . org-narrow-to-subtree)
   ("C-c a p" . my/org-sync)
 
@@ -50,14 +50,15 @@
 
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-                (sequence "REVIEW(r@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"
+                (sequence "REVIEW(r@/!)" "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"
                           "MEETING"))))
 
   (setq org-todo-keyword-faces
         (quote (("TODO" :foreground "red" :weight bold)
-                ("NEXT" :foreground "cyan" :weight bold)
+                ("NEXT" :foreground "deep sky blue" :weight bold)
                 ("DONE" :foreground "forest green" :weight bold)
                 ("REVIEW" :foreground "orange" :weight bold)
+                ("WAITING" :foreground "orange" :weight bold)
                 ("HOLD" :foreground "magenta" :weight bold)
                 ("CANCELLED" :foreground "forest green" :weight bold)
                 ("MEETING" :foreground "forest green" :weight bold))))
@@ -103,6 +104,7 @@
   (setq org-blank-before-new-entry
         '((heading . nil) (plain-list-item . nil)))
 
+
   (defcustom my/org-sync-command nil
     "Shell command to syncronize org files")
 
@@ -110,7 +112,11 @@
     (interactive)
     (if my/org-sync-command
         (async-shell-command my/org-sync-command)
-      (error "Sync command is not defined"))))
+      (error "Sync command is not defined")))
+
+  (setq org-agenda-skip-scheduled-if-done t
+        org-agenda-skip-deadline-if-done  t))
+
 
 
 (my/add-package "utils/mustache")
