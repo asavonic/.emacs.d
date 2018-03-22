@@ -416,5 +416,25 @@
 (my/add-package "utils/iedit")
 (use-package lispy)
 
-
+(my/add-package "dev/cask")
+(my/add-package "utils/tablist")
+(my/add-package "misc/pdf-tools")
+(my/add-package "misc/pdf-tools/pdf-tools-0.90")
+(use-package pdf-tools
+  :config
+  ;; pdf-tools fails to import everything by default (a bug?)
+  (require 'pdf-annot)
+  (require 'pdf-cache)
+  (require 'pdf-history)
+  (require 'pdf-info)
+  (require 'pdf-isearch)
+  (require 'pdf-links)
+  (require 'pdf-misc)
+  (require 'pdf-occur)
+  (require 'pdf-outline)
+  (require 'pdf-sync)
+  (require 'pdf-util)
+  (require 'pdf-view)
+  (require 'pdf-virtual)
+  (pdf-tools-install))
 
