@@ -333,8 +333,10 @@
 (my/add-package "utils/hl-anything")
 (use-package hl-anything
   :bind
-  ("C-c h h" . hl-highlight-thingatpt-global)
-  ("C-c h u" . hl-unhighlight-all-global)
+  ("C-c h h" . hl-highlight-thingatpt-local)
+  ("C-c h u" . hl-unhighlight-all-local)
+  ("C-c h H" . hl-highlight-thingatpt-global)
+  ("C-c h U" . hl-unhighlight-all-global)
   ("C-c h n" . hl-find-next-thing)
   ("C-c h p" . hl-find-prev-thing)
   ("C-c h s" . hl-save-highlights)
