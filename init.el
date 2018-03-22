@@ -395,9 +395,14 @@
                     (calendar-absolute-from-gregorian (list month day year)))))
           'font-lock-face 'font-lock-function-name-face)))
 
-
 ;; Try to use dedicated frame for compilation buffer
 (push '("\\*compilation\\*" . (nil (reusable-frames . t)))
       display-buffer-alist)
 
 (use-package mozc)
+
+(my/add-package "dev/lispy")
+(my/add-package "utils/avy")
+(my/add-package "utils/ace-window")
+(my/add-package "utils/iedit")
+(use-package lispy)

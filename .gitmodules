@@ -88,3 +88,15 @@
 [submodule "utils/beginend"]
 	path = packages/utils/beginend
 	url = https://github.com/DamienCassou/beginend
+[submodule "dev/lispy"]
+	path = packages/dev/lispy
+	url = https://github.com/abo-abo/lispy
+[submodule "utils/avy"]
+	path = packages/utils/avy
+	url = https://github.com/abo-abo/avy
+[submodule "utils/iedit"]
+	path = packages/utils/iedit
+	url = https://github.com/victorhge/iedit
+[submodule "utils/ace-window"]
+	path = packages/utils/ace-window
+	url = https://github.com/abo-abo/ace-window
