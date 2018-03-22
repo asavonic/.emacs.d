@@ -137,3 +137,6 @@
 	path = packages/misc/academic-phrases
 	url = https://github.com/nashamri/academic-phrases
 
+[submodule "packages/my/outlook"]
+	path = packages/my/outlook
+	url = git@github.com:asavonic/outlook.el
