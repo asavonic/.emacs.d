@@ -440,3 +440,8 @@
 
 (my/add-package "utils/hydra")
 (use-package hydra)
+
+(when my/exwm-enable
+  (my/load-config "exwm.el"))
+
+(setq epa-pinentry-mode 'loopback)
