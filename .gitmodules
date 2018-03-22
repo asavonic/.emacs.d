@@ -100,3 +100,40 @@
 [submodule "utils/ace-window"]
 	path = packages/utils/ace-window
 	url = https://github.com/abo-abo/ace-window
+[submodule "misc/pdf-tools"]
+	path = packages/misc/pdf-tools
+	url = https://github.com/politza/pdf-tools
+[submodule "utils/tablist"]
+	path = packages/utils/tablist
+	url = https://github.com/politza/tablist
+[submodule "dev/cask"]
+	path = packages/dev/cask
+	url = https://github.com/cask/cask
+[submodule "misc/xelb"]
+	path = packages/misc/xelb
+	url = https://github.com/ch11ng/xelb
+[submodule "misc/exwm"]
+	path = packages/misc/exwm
+	url = https://github.com/ch11ng/exwm
+[submodule "misc/pulseaudio"]
+	path = packages/misc/pulseaudio
+	url = https://github.com/flexibeast/pulseaudio-control
+[submodule "utils/hydra"]
+	path = packages/utils/hydra
+	url = https://github.com/abo-abo/hydra
+[submodule "misc/exim"]
+	path = packages/misc/exim
+	url = https://github.com/ch11ng/exim
+[submodule "misc/mozc-im"]
+	path = packages/misc/mozc-im
+	url = https://github.com/d5884/mozc-im
+[submodule "misc/simple-mpc"]
+	path = packages/misc/simple-mpc
+	url = https://github.com/jorenvo/simple-mpc
+[submodule "dev/package-lint"]
+	path = packages/dev/package-lint
+	url = https://github.com/purcell/package-lint
+[submodule "misc/academic-phrases"]
+	path = packages/misc/academic-phrases
+	url = https://github.com/nashamri/academic-phrases
+

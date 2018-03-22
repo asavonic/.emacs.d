@@ -128,6 +128,14 @@
   (use-package shell)
   (use-package term)
   (use-package eshell)
+
+  ;; Avoid error: Completion function pcomplete-completions-at-point
+  ;; uses a deprecated calling convention
+  (defun my/eshell-remove-pcomplete ()
+    (remove-hook 'completion-at-point-functions
+                 #'pcomplete-completions-at-point t))
+  (add-hook 'eshell-mode-hook #'my/eshell-remove-pcomplete)
+
   (add-hook 'shell-mode-hook  'with-editor-export-editor)
   (add-hook 'term-exec-hook   'with-editor-export-editor)
   (add-hook 'eshell-mode-hook 'with-editor-export-editor))
