@@ -438,3 +438,5 @@
   (require 'pdf-virtual)
   (pdf-tools-install))
 
+(my/add-package "utils/hydra")
+(use-package hydra)
