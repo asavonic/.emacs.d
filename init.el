@@ -445,3 +445,6 @@
   (my/load-config "exwm.el"))
 
 (setq epa-pinentry-mode 'loopback)
+
+(my/add-package "dev/package-lint")
+(use-package package-lint)
