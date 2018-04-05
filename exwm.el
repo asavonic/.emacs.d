@@ -36,11 +36,20 @@
     (let ((pulseaudio-control-volume-step "100%"))
       (pulseaudio-control-decrease-volume)))
 
+  (setq pulseaudio-ports '("analog-output-lineout" "analog-output-headphones"))
+  (nconc pulseaudio-ports pulseaudio-ports)
+  (defun pulseaudio-cycle-ports ()
+    (interactive)
+    (pulseaudio-control--call-pactl
+     (concat "set-sink-port @DEFAULT_SINK@ " (car pulseaudio-ports)))
+    (setq pulseaudio-ports (cdr pulseaudio-ports)))
+
   (defhydra my/pulseaudio nil
     "Pulseaudio"
     ("0" #'pulseaudio-control-mute            "mute")
     ("=" #'pulseaudio-control-increase-volume "volume up")
     ("-" #'pulseaudio-control-decrease-volume "volume down")
+    ("c" #'pulseaudio-cycle-ports  "change port")
     ("p" #'simple-mpc "player" :exit t))
 
   :bind
@@ -53,6 +62,17 @@
 
 (setq exwm-workspace-show-all-buffers t)
 (setq exwm-layout-show-all-buffers t)
+
+
+(defun my/exwm-hydra-passthrough (orig-fun keymap on-exit &optional foreign-keys)
+  (setq exwm-input-line-mode-passthrough t)
+  (let ((on-exit (lexical-let ((on-exit on-exit))
+                   (lambda ()
+                     (setq exwm-input-line-mode-passthrough nil)
+                     (when on-exit (funcall on-exit))))))
+    (apply orig-fun keymap on-exit foreign-keys)))
+
+(advice-add 'hydra-set-transient-map :around #'my/exwm-hydra-passthrough)
 
 (exwm-input-set-simulation-keys
  '(([?\C-s] . (C-f))
