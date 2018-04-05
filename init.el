@@ -410,11 +410,16 @@
 (my/add-package "misc/mozc-im")
 (use-package mozc-im)
 
+(my/add-package "utils/hydra")
+(use-package hydra)
+
 (my/add-package "dev/lispy")
 (my/add-package "utils/avy")
 (my/add-package "utils/ace-window")
 (my/add-package "utils/iedit")
-(use-package lispy)
+(use-package lispy
+  :config
+  (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
 
 (my/add-package "dev/cask")
 (my/add-package "utils/tablist")
@@ -437,9 +442,6 @@
   (require 'pdf-view)
   (require 'pdf-virtual)
   (pdf-tools-install))
-
-(my/add-package "utils/hydra")
-(use-package hydra)
 
 (when my/exwm-enable
   (my/load-config "exwm.el"))
