@@ -4,12 +4,13 @@
 (require 'exwm)
 (require 'exwm-config)
 (require 'exwm-randr)
-;; (require 'exim)
+(require 'exim)
 
 (setq exwm-randr-workspace-output-plist
       '(0 "HDMI-1" 1 "DVI-D-0"
           2 "HDMI-1" 3 "DVI-D-0"
-          4 "HDMI-1" 5 "DVI-D-0"))
+          4 "HDMI-1" 5 "DVI-D-0"
+          6 "HDMI-1" 7 "DVI-D-0"))
 (exwm-randr-enable)
 
 (exwm-config-default)
@@ -74,23 +75,37 @@
 
 (advice-add 'hydra-set-transient-map :around #'my/exwm-hydra-passthrough)
 
-(exwm-input-set-simulation-keys
- '(([?\C-s] . (C-f))
 
-   ([?\C-y] . (C-v))
-   ([?\C-w] . (C-x))
-   ([?\M-w] . (C-c))
+(custom-set-variables
+ '(exwm-input-simulation-keys
+   '(([?\C-s] . (C-f))
 
-   ([?\M-v] . prior)
-   ([?\C-v] . next)
-   ([?\C-p] . up)
-   ([?\C-n] . down)))
+     ([?\C-y] . (C-v))
+     ([?\C-w] . (C-x))
+     ([?\M-w] . (C-c))
+
+     ([?\M-v] . prior)
+     ([?\C-v] . next)
+     ([?\C-p] . up)
+     ([?\C-n] . down))))
 
 
 (push ?\C-\\ exwm-input-prefix-keys)
-;; (add-hook 'exwm-init-hook 'exim-start)
+(add-hook 'exwm-init-hook 'exim-start)
 
 (setq mozc-candidate-style 'echo-area)
 
 (my/add-package "misc/simple-mpc")
 (use-package simple-mpc)
+
+(defun my/sudo (&rest args)
+  (apply #'call-process "sudo" nil nil nil args))
+
+(defhydra my/power-settings nil
+  "Power options"
+  ("S" (lambda () (interactive) (my/sudo "pm-suspend"))     "suspend" :exit t)
+  ("H" (lambda () (interactive) (my/sudo "pm-hibernate"))   "hibernate" :exit t)
+  ("D" (lambda () (interactive) (my/sudo "shutdown" "now")) "shutdown" :exit t)
+  ("R" (lambda () (interactive) (my/sudo "reboot"))         "reboot" :exit t))
+
+(global-set-key (kbd "C-c p") #'my/power-settings/body)
