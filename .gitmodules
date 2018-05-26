@@ -140,3 +140,15 @@
 [submodule "packages/my/outlook"]
 	path = packages/my/outlook
 	url = git@github.com:asavonic/outlook.el
+[submodule "misc/modalka"]
+	path = packages/misc/modalka
+	url = https://github.com/mrkkrp/modalka
+[submodule "dev/csv-mode"]
+	path = packages/dev/csv-mode
+	url = https://github.com/emacsmirror/csv-mode
+[submodule "org/ob-async"]
+	path = packages/org/ob-async
+	url = https://github.com/astahlman/ob-async
+[submodule "utils/async"]
+	path = packages/utils/async
+	url = https://github.com/jwiegley/emacs-async

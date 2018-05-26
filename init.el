@@ -450,3 +450,41 @@
 
 (my/add-package "dev/package-lint")
 (use-package package-lint)
+
+
+(when my/is-android
+  (my/add-package "misc/modalka")
+  (use-package modalka
+    :config
+    (global-set-key (kbd "<f12>") #'modalka-mode)
+    (modalka-define-kbd "h" "C-b")
+    (modalka-define-kbd "j" "C-n")
+    (modalka-define-kbd "k" "C-p")
+    (modalka-define-kbd "l" "C-f")
+    (modalka-define-kbd "SPC" "C-SPC")    ; Mark
+    (modalka-define-kbd "y" "C-y")        ; Yank
+    (modalka-define-kbd "w" "C-w")        ; Kill
+    (modalka-define-kbd "u" "C-x u")      ; Undo
+    (modalka-define-kbd "s" "C-s")        ; Search
+    (modalka-define-kbd "g" "C-g")        ; Break
+
+    (modalka-define-kbd "c c" "C-c C-c")  ; Confirm
+
+    ;; Org
+    (modalka-define-kbd "a a" "C-c a a")  ; Agenda
+    (modalka-define-kbd "a c" "C-c a c")  ; Capture
+    (modalka-define-kbd "a d" "C-c a d")  ; Calendar
+    ))
+
+
+(my/add-package "dev/csv-mode")
+(use-package csv-mode)
+
+(defun my/idle-long ()
+  (bookmark-save)
+  (org-save-all-org-buffers))
+
+(run-with-idle-timer 180 t #'my/idle-long)
+
+(my/add-package "utils/async")
+(use-package async)
