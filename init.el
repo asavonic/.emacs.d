@@ -383,6 +383,7 @@
   (revert-buffer t t))
 
 (global-set-key (kbd "C-c b r") #'my/revert-buffer-no-prompt)
+(global-set-key (kbd "C-c b e") #'rename-buffer)
 
 (use-package subword
   :config
