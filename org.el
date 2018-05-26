@@ -115,7 +115,20 @@
       (error "Sync command is not defined")))
 
   (setq org-agenda-skip-scheduled-if-done t
-        org-agenda-skip-deadline-if-done  t))
+        org-agenda-skip-deadline-if-done  t)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((C . t)
+     (emacs-lisp . t)
+     (shell . t)
+     (org . t)
+     (calc . t)
+     (perl . t)
+     (python . t)
+     (dot . t)))
+
+  (setq org-agenda-columns-add-appointments-to-effort-sum t))
 
 
 
@@ -127,6 +140,11 @@
   :config
   (setq op/repository-directory "~/blog")
   (setq op/browser-preview nil))
+
+
+(my/add-package "utils/async")
+(my/add-package "org/ob-async")
+(use-package ob-async)
 
 
 (my/add-package "org/org-bookmark-heading")
