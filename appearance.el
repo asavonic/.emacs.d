@@ -126,7 +126,8 @@ VAR when Emacs is running in a terminal else just nil."
   (my/add-package "visual/solarized")
   (add-to-list 'custom-theme-load-path (my/package-dir "visual/solarized"))
   (my/solarized-theme-settings)
-  (load-theme 'solarized-dark))
+  (disable-theme 'wombat)
+  (load-theme 'solarized-light))
 
 (defun my/use-terminal-theme ()
   (load-theme 'wombat))
