@@ -162,9 +162,6 @@
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-height 20))
 
-(use-package swiper
-  :bind
-  ("C-s" . swiper))
 
 (use-package counsel
   :config
