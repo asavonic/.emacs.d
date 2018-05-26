@@ -367,7 +367,11 @@
 (use-package compile
   :bind
   ("C-c c c" . compile)
-  ("C-c c r" . recompile))
+  ("C-c c r" . recompile)
+  :config
+  (setq compilation-scroll-output 'first-error
+        ;; skip warnings
+        compilation-skip-threshold 2))
 
 (my/add-package "dev/llvm")
 (use-package llvm-mode)
