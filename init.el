@@ -15,3 +15,14 @@
 (my/add-package "magit/lisp")
 (use-package magit
   :bind ("C-c g s" . magit-status))
+
+;; Store all backup and autosave files in a cache dir
+(defvar my/user-cache-dir
+  (concat
+   (or (getenv "XDG_CACHE_HOME")
+       (concat (getenv "HOME") "/" ".cache"))
+   "/"
+   "emacs"))
+(setq backup-directory-alist `((".*" . ,my/user-cache-dir))
+      auto-save-file-name-transforms `((".*" ,my/user-cache-dir t)))
+
