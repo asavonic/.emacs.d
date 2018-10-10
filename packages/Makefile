@@ -1,3 +1,4 @@
+EMACS := emacs
 TOP := $(shell pwd)
 LOAD_PATH :=					\
 	-L .					\
@@ -15,12 +16,20 @@ PATH := $(TOP)/cask/bin:$(PATH)
 export LOAD_PATH
 export PATH
 
+define bytecomp
+	$(EMACS) -Q --batch -L $(LOAD_PATH) \
+	   --eval '(setq byte-compile-error-on-warn t)' \
+	   -f batch-byte-compile $(1)
+endef
+
+
 all:						\
 	use-package/use-package.elc		\
 	with-editor/with-editor.elc		\
 	ghub/ghub.elc				\
 	magit-popup/magit-popup.elc		\
-	magit/magit.elc
+	magit/magit.elc			\
+	dash/dash.elc
 
 
 use-package/use-package.elc:
@@ -38,6 +47,11 @@ magit-popup/magit-popup.elc:
 magit/magit.elc:
 	make -C magit lisp
 	make -C magit/lisp
+
+dash/dash.elc:
+	$(call bytecomp, dash/dash-functional.el)
+	$(call bytecomp, dash/dash.el)
+
 
 clean:
 	make -C use-package clean
