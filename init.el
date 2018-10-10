@@ -1,6 +1,4 @@
-
-(add-to-list 'load-path user-emacs-directory)
-(require 'my-add-package)
+(load (locate-user-emacs-file "my-add-package"))
 
 (my/add-package "use-package")
 (require 'use-package)
@@ -141,3 +139,46 @@
 	mode-line-end-spaces))
 (column-number-mode 1)
 (force-mode-line-update)
+
+(defun my/font-exists? (fontname)
+  "test if this font is exist or not."
+  (and
+   fontname
+   (display-graphic-p)
+   (x-list-fonts fontname)))
+
+(defvar my/font    "DejaVu Sans Mono" "Main font")
+(defvar my/font-ja "IPAPMincho"       "Japanese font")
+
+(defun my/use-font (&optional frame)
+  (when (display-graphic-p)
+    (when frame
+      (select-frame frame))
+
+    (cond ((string= system-name "ASAVONIC-MOBL")
+           (setq my/font "Source Code Pro-11"))
+          ((string= system-name "kubuntu-vm")
+           (setq my/font "Source Code Pro-12"))
+          ((eq system-type 'gnu/linux)
+           (setq my/font "DejaVu Sans Mono-12")))
+
+    (when (my/font-exists? my/font)
+      (set-face-attribute 'default nil :font my/font))
+
+    (when (my/font-exists? my/font-ja)
+      (dolist (charset '(kana han symbol cjk-misc bopomofo))
+	(set-fontset-font (frame-parameter nil 'font) charset
+                          (font-spec :family my/font-ja))))))
+
+(defun my/use-color-theme (&optional frame)
+  (when (display-graphic-p)
+    (when frame
+      (select-frame frame))
+    (set-face-attribute 'default nil :background "cornsilk")))
+
+
+;; Setup font for emacsclient frames
+(add-hook 'after-make-frame-functions #'my/use-font)
+(add-hook 'after-make-frame-functions #'my/use-color-theme)
+(my/use-font)
+(my/use-color-theme)
