@@ -14,7 +14,84 @@
 (my/add-package "magit")
 (my/add-package "magit/lisp")
 (use-package magit
-  :bind ("C-c g s" . magit-status))
+  :bind
+  ("C-c g s" . magit-status)
+  ("C-c g ~" . magit-find-file-other-window)
+  ("C-c g b" . magit-file-popup))
+
+(use-package savehist
+  :config (savehist-mode 1))
+
+(use-package ido
+  :config
+  (setq ido-enable-flex-matching t)
+  (setq ido-create-new-buffer 'always)
+  ;; do not try to guess a file when creating a new file or directory
+  (setq ido-auto-merge-work-directories-length -1)
+  (setq ido-file-extensions-order
+        '(".org" ".txt" ".el" ".h" ".cpp" ".c"))
+  (setq ido-use-virtual-buffers t)
+
+  (when (boundp 'ido-ignore-files)
+    (push ".*.o\\'" ido-ignore-files))
+
+  ;; prevent auto-searches unless called explicitly
+  (setq ido-auto-merge-work-directories-length -1)
+  (ido-mode 1))
+
+(use-package recentf
+  :config
+  (setq recentf-max-menu-items 250)
+  (run-at-time "30" (* 10 60) #'recentf-save-list)
+  (recentf-mode 1))
+
+(use-package winner
+  :config
+  (winner-mode 1)
+
+  :bind
+  ("C-c w u" . winner-undo)
+  ("C-c w r" . winner-redo))
+
+(use-package dired
+  :bind (:map dired-mode-map
+	      ("s"	. my/eshell-here)
+	      ("; t c"	. my/dired-tar-compress)
+	      ("; t d"	. my/dired-tar-compress))
+  :config
+  ;; show human readable file sizes in Dired
+  (setq dired-listing-switches "-alh")
+  ;; behave like 2-panel file manager, i.e. another dired buffer would
+  ;; be a default directory for copy/move operations
+  (setq dired-dwim-target t)
+
+  (defun my/eshell-here ()
+    "Go to eshell and set current directory to the buffer's directory"
+    (interactive)
+    (let ((dir (file-name-directory (or (buffer-file-name)
+                                        default-directory))))
+      (eshell)
+      (eshell/pushd ".")
+      (cd dir)
+      (goto-char (point-max))
+      (eshell-kill-input)
+      (eshell-send-input)))
+
+  (defun my/dired-tar-compress (&optional arg)
+    (interactive)
+    (let* ((files (dired-get-marked-files t current-prefix-arg))
+           (name (if (cdr files)
+                     (ido-read-file-name "tar file: " nil nil nil ""
+                                         #'file-regular-p)
+                   (concat (car files) ".tar.gz"))))
+           (dired-do-shell-command (format "tar -zcvf %s * " name)
+                                   arg files)))
+
+  (defun my/dired-tar-decompress (&optional arg)
+    (interactive)
+    (let ((files (dired-get-marked-files t current-prefix-arg)))
+      (dired-do-shell-command "tar -xvf * " arg files))))
+
 
 ;; Store all backup and autosave files in a cache dir
 (defvar my/user-cache-dir
