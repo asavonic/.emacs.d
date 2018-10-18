@@ -135,10 +135,23 @@
   (concat
    (or (getenv "XDG_CACHE_HOME")
        (concat (getenv "HOME") "/" ".cache"))
-   "/"
-   "emacs"))
+   "/emacs/"))
+
+(make-directory my/user-cache-dir t)
+
 (setq backup-directory-alist `((".*" . ,my/user-cache-dir))
       auto-save-file-name-transforms `((".*" ,my/user-cache-dir t)))
+
+(setq auto-save-list-file-prefix
+      (concat my/user-cache-dir "auto-save-list/.saves-"))
+
+(setq eshell-directory-name (concat my/user-cache-dir "eshell/"))
+
+(setq ido-save-directory-list-file (concat my/user-cache-dir "ido.last"))
+
+(setq savehist-file (concat my/user-cache-dir "history"))
+
+(setq recentf-save-file (concat my/user-cache-dir "recentf"))
 
 
 ;; Disable menubar/scrollbar/etc.
